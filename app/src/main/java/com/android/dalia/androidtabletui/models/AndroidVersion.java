@@ -1,21 +1,26 @@
 package com.android.dalia.androidtabletui.models;
 
-import android.graphics.drawable.Drawable;
+import java.io.Serializable;
 
 /**
  * Created by Dalia on 9/3/2016.
  */
-public class AndroidVersion {
+public class AndroidVersion implements Serializable{
     private String name;
     private double number;
-    private Drawable image;
+    private int image;
     private double api_level;
+    private String description;
 
-    public AndroidVersion(String name, Drawable image, double number, double api_level) {
+    public AndroidVersion(String name, int image, double number, double api_level, String description) {
         this.name = name;
         this.image = image;
         this.number = number;
         this.api_level = api_level;
+        this.description = description;
+    }
+
+    public AndroidVersion() {
     }
 
     public String getName() {
@@ -34,11 +39,11 @@ public class AndroidVersion {
         this.number = number;
     }
 
-    public Drawable getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(Drawable image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
@@ -48,5 +53,13 @@ public class AndroidVersion {
 
     public void setApi_level(double api_level) {
         this.api_level = api_level;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

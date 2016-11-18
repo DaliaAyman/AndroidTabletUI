@@ -1,5 +1,7 @@
 package com.android.dalia.androidtabletui.adapters;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +19,10 @@ import java.util.List;
  */
 public class AndroidVersionsAdapter extends RecyclerView.Adapter<AndroidVersionsAdapter.ViewHolder>{
     private List<AndroidVersion> versionsList;
+    Context context;
 
-    public AndroidVersionsAdapter(List<AndroidVersion> versionsList) {
+    public AndroidVersionsAdapter(Context context, List<AndroidVersion> versionsList) {
+        this.context = context;
         this.versionsList = versionsList;
     }
 
@@ -56,7 +60,7 @@ public class AndroidVersionsAdapter extends RecyclerView.Adapter<AndroidVersions
     public void onBindViewHolder(ViewHolder holder, int position) {
         AndroidVersion version = versionsList.get(position);
 
-        holder.image.setImageDrawable(version.getImage());
+        holder.image.setImageDrawable(ContextCompat.getDrawable(context, version.getImage()));
         holder.name.setText(version.getName());
         holder.api_level.setText(Double.toString(version.getApi_level()));
         holder.number.setText(Double.toString(version.getNumber()));
